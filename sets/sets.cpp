@@ -33,9 +33,11 @@ int main()
 	
 	elements[0] = 69420;
 
+	set.print();
 	set.setElements(elements, 5);
 
-	set3 = set + set2;
+	set.print();
+	set3 =set + set2;
 
 	set3.print();
 

@@ -3,16 +3,14 @@
 
 Set::Set(const int* arr, const size_t size)
 {
-	setSize(size);
-	//delete[] elements;
-	setElements(arr, getSize());
+	setElements(arr, size);
 }
 
-Set::Set(const Set* set)
+Set::Set(const Set& set)
 {
-	this->size = set->size;
+	this->size = set.size;
 	this->elements = new int[this->size];
-	setElements(set->elements, getSize());
+	setElements(set.elements, getSize());
 }
 
 void Set::setSize(size_t size)
@@ -23,6 +21,8 @@ void Set::setSize(size_t size)
 void Set::setElements(const int* arr, int s)
 {
 	elements = new int[s];
+	setSize(s);
+
 	for (int i = 0; i < s; i++)
 	{
 		elements[i] = arr[i];
@@ -34,7 +34,7 @@ size_t Set::getSize() const
 	return this->size;
 }
 
-void Set::print()
+void Set::print() const 
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -95,6 +95,9 @@ Set& Set::operator=(const Set& other)
 
 Set& Set::operator+=(const Set& other)
 {
+	this->print();
+	other.print();
+	
 	size_t newSize = calculateRealSizeForAddition(other.elements, other.getSize());
 	int* res = new int[newSize];
 
@@ -125,7 +128,7 @@ Set& Set::operator+=(const Set& other)
 Set Set::operator+(const Set& other)
 {
 	Set result(*this);
-	//result += other;
-	return result += other;
+	result += other;
+	return result;
 }
 

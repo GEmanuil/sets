@@ -3,7 +3,7 @@ class Set
 {
 public:
 	Set(const int*, const size_t size);
-	Set(const Set* set);
+	Set(const Set& set);
 	~Set();
 
 	Set& operator=(const Set& set);
@@ -15,7 +15,7 @@ public:
 	void setElements(const int*, int s);
 
 	size_t getSize() const;
-	void print();
+	void print() const;
 
 private:
 	size_t calculateRealSizeForAddition(int* arr, int sizeOfArr) const;
